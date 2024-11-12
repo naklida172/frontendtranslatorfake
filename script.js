@@ -1,5 +1,5 @@
 let favorites = [];
-
+import { fakeTranslate } from './fakeTranslate.js';//импорт фейкТранслейта 
 // Функция для перевода слова с использованием fakeTranslate
 async function translateWord() {
     const word = document.getElementById("wordInput").value.trim();
@@ -41,11 +41,11 @@ function updateFavorites() {
         favorites.forEach((item, index) => {
             const listItem = document.createElement("li");
             listItem.innerText = `${item.word} - ${item.translation}`;
-            
+
             const removeButton = document.createElement("button");
             removeButton.innerText = "Удалить";
             removeButton.addEventListener("click", () => removeFavorite(index));
-            
+
             listItem.appendChild(removeButton);
             favoritesList.appendChild(listItem);
         });
@@ -54,9 +54,14 @@ function updateFavorites() {
 
 // Удаление перевода из избранного
 function removeFavorite(index) {
-    // Удалите элемент из favorites
+    favorites.splice(index, 1);// Удалите элемент из favorites
     updateFavorites();
     alert("Перевод удален из избранного.");
 }
 
 // Добавьте обработчики событий для кнопок
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");//дебагинг
+    document.getElementById("translateButton").addEventListener("click", translateWord);
+    document.getElementById("saveButton").addEventListener("click", saveTranslation);
+});

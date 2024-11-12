@@ -23,7 +23,7 @@ const dictionary = {
 };
 
 // Допишите код для fakeTranslate
-function fakeTranslate(word) {
+export function fakeTranslate(word) {
     return new Promise((resolve, reject) => {
         // Имитация асинхронной операции с задержкой
         setTimeout(() => {
