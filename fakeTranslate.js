@@ -27,7 +27,12 @@ function fakeTranslate(word) {
     return new Promise((resolve, reject) => {
         // Имитация асинхронной операции с задержкой
         setTimeout(() => {
-           
+            if (dictionary[word]) {
+                resolve(dictionary[word]);
+            }
+            else {
+                reject("Неизвестное слово");
+            }
         }, 1000); // Задержка 1 секунда
     });
 }

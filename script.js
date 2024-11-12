@@ -8,11 +8,11 @@ async function translateWord() {
         return;
     }
     try {
-        const translation = // Используйте fakeTranslate
+        const translation = await fakeTranslate(word);// Используйте fakeTranslate
         document.getElementById("translationResult").innerText = translation;
-        // Разблокировать кнопку сохранения
+        document.getElementById("saveButton").disabled = false;// Разблокировать кнопку сохранения
     } catch (error) {
-        // Покажите сообщение об ошибке
+        document.getElementById("translationResult").innerText = error;// Покажите сообщение об ошибке
     }
 }
 
